@@ -1,6 +1,8 @@
 //variables globales para usar en cualquier parte
 let ataqueJugador  
 let ataqueEnemigo
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 function iniciarJuego() {
     let botonMascotaJugador = document.getElementById('boton-mascota')
@@ -30,9 +32,9 @@ function seleccionarMascotaJugador() {
         alert("Debes seleccionar una mascota")
     }
 
-
     seleccionarMascotaEnemigo()
 }
+
 //aqui se selecciona la mascota del pc-enemigo
 function seleccionarMascotaEnemigo() {
 
@@ -40,11 +42,11 @@ function seleccionarMascotaEnemigo() {
     let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
     if (mascotaAleatoria == 1) {
-        spanMascotaEnemigo.innerHTML = document.getElementById = 'Hipodoge'
+        spanMascotaEnemigo.innerHTML = document.getElementById = 'Hipodoge 💧'
     } else if (mascotaAleatoria == 2) {
-        spanMascotaEnemigo.innerHTML = document.getElementById = 'Capipepo'
+        spanMascotaEnemigo.innerHTML = document.getElementById = 'Capipepo 🌱'
     } else {
-        spanMascotaEnemigo.innerHTML = document.getElementById = 'Ratigueya'
+        spanMascotaEnemigo.innerHTML = document.getElementById = 'Ratigueya 🔥'
     }
 }
 //condicionales para los ataques del jugador
@@ -71,7 +73,52 @@ function ataqueAleatorioEnemigo() {
     } else {
         ataqueEnemigo = 'TIERRA'
     }
+
+    combate()
 }
+
+function combate() {
+
+    let spanVidasJugador = document.getElementById('vidas-jugador')
+    let spanVidasEnemigo = document.getElementById('vidas-enemigo')
+
+
+    if (ataqueEnemigo == ataqueJugador) {
+        crearMensaje("EMPATE")
+    } else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
+        crearMensaje("GANASTE")
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
+        
+    } else if (ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
+        crearMensaje("GANASTE")
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
+        
+    } else if (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') {
+        crearMensaje("GANASTE")
+        vidasEnemigo--
+        spanVidasEnemigo.innerHTML = vidasEnemigo
+        
+    } else {
+        crearMensaje("PERDISTE")
+
+        vidasJugador--
+        spanVidasJugador.innerHTML = vidasJugador
+        
+    }
+}
+
+function crearMensaje(resultado) {
+    let sectionMensajes = document.getElementById('mensajes')
+
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo +  '- ' + resultado 
+
+    sectionMensajes.appendChild(parrafo)
+}
+
+
 
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
