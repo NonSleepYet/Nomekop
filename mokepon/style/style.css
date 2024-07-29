@@ -8,7 +8,7 @@ body {
     font-family: "Ubuntu", sans-serif;
     font-weight: 700;
     font-style: normal;
-    background-color: #ED7D31; 
+    background-color: #ED7D31;
 }
 
 #seleccionar-mascota {
@@ -28,7 +28,8 @@ body {
     font-size: 20px;
 }
 
-.tarjetas {
+.tarjetas,
+.tarjetas-ataques {
     display: flex;
     gap: 10px;
 }
@@ -50,7 +51,7 @@ body {
     width: 80px;
 }
 
-#boton-mascota{
+#boton-mascota {
     width: 180px;
     height: 40px;
     border-radius: 20px;
@@ -85,13 +86,49 @@ input {
     font-style: normal;
 }
 
-#mensajes{
-    width:280px;
-    background:#F6F1EE;
-    padding:20px;
-    margin-top:20px;
-    border-radius:20px;
-    display:flex;
-    align-items:center;
-    flex-direction:column
+#mensajes {
+    width: 280px;
+    background: #F6F1EE;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column
+}
+
+#boton-reiniciar {
+    border: none;
+    color: #6C5F5B;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.ataques {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    justify-items: center;
+    color: F6F1EE;
+}
+
+#vidas-jugador,
+#vidas-enemigo {
+    font-size: 32px;
+    margin-bottom: 0;
+}
+
+.ataques-jugador, .ataques-enemigo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+@media (max-width: 360px) {
+
+    .tarjetas,
+    .tarjetas-ataques {
+        flex-direction: column;
+    }
 }
