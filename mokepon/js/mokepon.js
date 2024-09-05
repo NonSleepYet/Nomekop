@@ -212,16 +212,29 @@ function indexAmbosOponentes(jugador, enemigo) {
 
 function combate() {
 
-
     for (let i = 0; i < ataqueJugador.length; i++) {
         if(ataqueJugador[i] === ataqueEnemigo[i]) {
-            indexAmbosOponentes(index, index)
+            indexAmbosOponentes(i, i)
             crearMensaje("EMPATE")
-        }
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+        } else if (ataqueJugador[i] === 'FUEGO' && ataqueEnemigo[i] === 'TIERRA'){
+            indexAmbosOponentes(i, i)
+            crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+        } else if (ataqueJugador[i] === 'AGUA' && ataqueEnemigo[i] === 'FUEGO') {
+            indexAmbosOponentes(i, i)
+            crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
+        } else if (ataqueJugador[i] === 'TIERRA' && ataqueEnemigo[i] === 'FUEGO') {
+            indexAmbosOponentes(i, i)
+            crearMensaje("GANASTE")
+            vidasEnemigo--
+            spanVidasEnemigo.innerHTML = vidasEnemigo
         
     }
-
-
 
     if (ataqueEnemigo == ataqueJugador) { crearMensaje("EMPATE") } else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
         crearMensaje("GANASTE")
@@ -258,7 +271,7 @@ function crearMensaje(resultado) {
 
     sectionMensajes.innerHTML = resultado
     nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
-    nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigotaqueEnemigo
+    nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo
 
     ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
